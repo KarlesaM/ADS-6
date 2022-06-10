@@ -26,7 +26,7 @@ class TPQueue {
   }
 };
 
-struct sum {
+struct SYM {
  char ch;
  int prior;
 };
