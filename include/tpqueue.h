@@ -3,32 +3,43 @@
 #define INCLUDE_TPQUEUE_H_
 #include <string>
 
-template <typename T, int size>
+template<typename T, int size>
 class TPQueue {
  private:
-    T arr[100];
-    int first, last;
+T mas[100];
+int first;
+int last;
+
  public:
-    TPQueue() : first(0), last(0) {}
-    void push(T num) {
-      if (last - first >= size) {
-      throw std::string("Full!");
-      } else {
-      int con = last++;
-      while ((--con >= first) && (arr[con % size].prior < num.prior)) {
-        arr[(con + 1) % size] = arr[con % size];
-      }
-      arr[(con + 1) % size] = num;
-      }
-      }
-    T pop() {
-    return arr[(first++) % size];
-  }
+TPQueue() : first(0), last(0) {}
+void push(T vel1) {
+if (last - first >= size) {
+throw "Full!";
+} else {
+int vel2 = last - 1;
+while ((vel2 >= first) && (mas[vel2 % size].prior <
+vel1.prior)) {
+mas[(vel2 + 1) % size] = mas[vel2 % size];
+vel2--;
+}
+mas[(vel2 + 1) % size] = vel1;
+last++;
+}
+}
+T front() {
+return mas[first % size];
+}
+T back() {
+return mas[(last - 1) % size];
+}
+T pop() {
+return mas[(first++) % size];
+}
 };
 
 struct SYM {
- char ch;
- int prior;
+char ch;
+int prior;
 };
 
 #endif  // INCLUDE_TPQUEUE_H_
